@@ -1,0 +1,22 @@
+version 2
+jobs:
+  build_php:
+    docker:
+     - image: circleci/php
+    steps:
+     - checkout
+     - run: yarn install
+  test:
+    docker:
+     - image: circleci/php
+    steps:
+     - checkout
+     - run: echo "TESTING"
+workflows:
+  version: 2
+  build_and_test:
+    jobs:
+     - build_php
+     - test:
+         reuires:
+          - build_php
