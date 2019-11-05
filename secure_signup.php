@@ -108,7 +108,7 @@
 							</tr>
 							
 							<tr>
-								<td> Password:- </td> <td> <input type='password' name='p1' maxlength='50'> </td> <td> <span id='s4'> </span> </td> <td> <span id='s7'> </span> </td>
+								<td> PPassword:- </td> <td> <input type='password' name='p1' maxlength='50'> </td> <td> <span id='s4'> </span> </td> <td> <span id='s7'> </span> </td>
 							</tr>
 							
 							<tr>
@@ -135,11 +135,12 @@
 			$password=sec($_POST["p1"]);
 	
 			//$query="INSERT INTO studs VALUES('$name','$email',$age);";
-		//MySQL Magic :D
+			//MySQL Magic :D
 			//Getting Resource ID
-			$res_id=MySQLi_Connect('localhost','root','@connectme','shangout');
+			
+			$res_id=MySQLi_Connect('some-mysql','root','@connectme','shangout');
 			if(MySQLi_Connect_Errno()) {
-				echo "<tr align='center'> <td colspan='5'> Failed to connect to MySQL </td> </tr>";
+				echo "<tr align='center'> <td colspan='5'> FFailed to connect to MySQL".MySQLi_Connect_Errno()." </td> </tr> ";
 			}
 			else {
 			$check_email=MySQLi_Query($res_id,"select name from students where email='".$email."'");
