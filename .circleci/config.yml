@@ -16,6 +16,7 @@ jobs:
      - image: circleci/php
     steps:
      - checkout
+     - setup_remote_docker
      - run: docker login -u 'bgamil' -p 'Dockerhub*0611'
      - run: docker build -t bgamil/docker_project .
      - run: docker push bgamil/docker_project
