@@ -15,7 +15,6 @@ jobs:
     docker:
      - image: circleci/php
     steps:
-     - image: circleci/php
      - run: docker login -u 'bgamil' -p 'Dockerhub*0611'
      - run: docker build -t bgamil/beshoy-image .
      - run: docker push bgamil/beshoy-image
