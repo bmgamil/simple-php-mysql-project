@@ -11,6 +11,15 @@ jobs:
     steps:
      - checkout
      - run: echo "TESTING"
+  docker_push:
+    docker:
+     - image: circleci/php
+    steps:
+     - image: circleci/php
+     - run: docker login -u $DOCKER_USER -p $DOCKER_PASS
+     - run: docker build -t bgamil/beshoy-image .
+     - run: docker push bgamil/beshoy-image
+
 workflows:
   version: 2
   build_and_test:
@@ -19,3 +28,6 @@ workflows:
      - test:
         requires:
           - build_php
+     - docker_push:
+        requires:
+          - test
