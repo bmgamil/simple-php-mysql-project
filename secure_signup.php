@@ -138,7 +138,7 @@
 			//MySQL Magic :D
 			//Getting Resource ID
 			
-			$res_id=MySQLi_Connect('some-mysql','root','@connectme','shangout');
+			$res_id=MySQLi_Connect('localhost','root','@connectme','shangout');
 			if(MySQLi_Connect_Errno()) {
 				echo "<tr align='center'> <td colspan='5'> FFailed to connect to MySQL".MySQLi_Connect_Errno()." </td> </tr> ";
 			}

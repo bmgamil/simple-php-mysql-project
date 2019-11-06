@@ -3,14 +3,21 @@ jobs:
   build_php:
     docker:
      - image: circleci/php
+          
     steps:
      - checkout
   test:
     docker:
      - image: circleci/php
+     - image: mysql
+       environment:
+        MYSQL_ROOT_PASSWORD: '@connectme'
     steps:
      - checkout
-     - run: echo "TESTING"
+     - run: sudo apt update
+     - run: sudo apt install mysql-client -y
+     - run: dockerize -wait tcp://localhost -timeout 2m
+     - run: curl http://localhost/create_database.php
   docker_push:
     docker:
      - image: circleci/php
