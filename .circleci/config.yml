@@ -16,4 +16,6 @@ workflows:
   build_and_test:
     jobs:
      - build_php
-     - test
+     - test:
+        requires:
+          - build_php
